@@ -1,6 +1,5 @@
-package com.shivang.tournament_service.security;
+package com.shivang.sports_team.security;
 
-import org.springframework.http.HttpMethod;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.Customizer;
@@ -28,14 +27,9 @@ public class SecurityConfig {
 
         http
                 .csrf(csrf -> csrf.disable())
-                .authorizeHttpRequests(auth -> auth
-                        .requestMatchers(
-                                HttpMethod.GET,
-                                "/tournaments/**"
-                        ).permitAll()
-
-                        .anyRequest()
-                        .authenticated()
+                .authorizeHttpRequests(auth ->
+                        auth.anyRequest()
+                                .authenticated()
                 )
                 .addFilterBefore(
                         jwtFilter,
