@@ -68,6 +68,19 @@ public class TeamController {
         );
     }
 
+    @GetMapping("/{teamId}")
+    public Team getTeam(
+            @PathVariable Long teamId) {
+
+        return teamService.getTeam(teamId);
+    }
+
+    @GetMapping("/registrations")
+    public List<TeamRegistration> getAllRegistrations() {
+
+        return teamService.getAllRegistrations();
+    }
+
 
 
 }

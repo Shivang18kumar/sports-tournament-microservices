@@ -129,4 +129,20 @@ public class TeamService {
                 .save(registration);
     }
 
+    public Team getTeam(Long teamId) {
+
+        return teamRepository.findById(teamId)
+                .orElseThrow(() ->
+                        new ResourceNotFoundException(
+                                "Team not found"
+                        ));
+    }
+
+    public List<TeamRegistration> getAllRegistrations() {
+
+        return teamRegistrationRepository.findAll();
+    }
+
+
+
 }
